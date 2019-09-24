@@ -5,6 +5,7 @@ const helmet = require('helmet');
 const cors = require('cors');
 
 const movies = require('./movies-data');
+const authToken = process.env.API_TOKEN;
 
 const app = express();
 
