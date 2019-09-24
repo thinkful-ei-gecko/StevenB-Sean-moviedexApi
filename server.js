@@ -20,7 +20,7 @@ function validateBearerToken( req, res, next ) {
   const userToken = req.get('Authorization');
 
   if (!userToken || userToken.split(' ')[1] !== authToken) {
-    return res.status(401).json('error: Unauthorized request')
+    return res.status(401).json({error: 'Unauthorized request'})
   }
 
   next();
