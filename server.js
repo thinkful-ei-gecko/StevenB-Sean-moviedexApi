@@ -5,6 +5,7 @@ const helmet = require('helmet');
 const cors = require('cors');
 
 const movies = require('./movies-data');
+const PORT = 8000;
 
 const app = express();
 
@@ -50,5 +51,4 @@ app.get('/movie', ( req, res ) => {
   res.json(results);
 })
 
-const PORT = 8000;
 app.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
