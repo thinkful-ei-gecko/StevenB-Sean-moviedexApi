@@ -5,7 +5,6 @@ const helmet = require('helmet');
 const cors = require('cors');
 
 const movies = require('./movies-data');
-const authToken = process.env.API_TOKEN;
 
 const app = express();
 
@@ -14,10 +13,10 @@ app.use(morgan('dev'));
 app.use(helmet());
 app.use(cors());
 
+//add token authorization
 function validateBearerToken( req, res, next ) {
+  const authToken = process.env.API_TOKEN;
   const userToken = req.get('Authorization');
-  console.log(`Validate bearer token middleware executed. Token key is ${userToken}`);
-  console.log(authToken);
   if (!userToken || userToken.split(' ')[1] !== authToken) {
     return res.status(401).json('error: Unauthorized request')
   }
@@ -26,7 +25,7 @@ function validateBearerToken( req, res, next ) {
 
 app.use(validateBearerToken);
 
-//endpoint date manipulation
+//endpoint data manipulation
 app.get('/movie', ( req, res ) => {
   res.json('I am running!');
 })
