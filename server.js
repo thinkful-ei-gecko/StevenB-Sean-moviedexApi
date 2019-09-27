@@ -52,4 +52,4 @@ app.get('/movie', ( req, res ) => {
   res.json(results);
 });
 
-app.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
+app.listen(PORT);
