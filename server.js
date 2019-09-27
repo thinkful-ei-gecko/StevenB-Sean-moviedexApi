@@ -8,9 +8,10 @@ const movies = require('./movies-data');
 const PORT = process.env.PORT || 8000;
 
 const app = express();
+const morganSetting = process.env.NODE_ENV === 'production' ? 'tiny' : 'common';
 
 //add all middleware
-app.use(morgan('dev'));
+app.use(morgan(morganSetting));
 app.use(helmet());
 app.use(cors());
 
